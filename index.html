@@ -1,25 +1,133 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito di wpremio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sito di wpremio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 64px;
-            text-align: center;
-            margin: 40px 0;
-        }
-    </style>
+    h1 {
+      font-size: 64px;
+      text-align: center;
+      margin: 24px 0 40px;
+    }
+
+    /* Contenitore responsive per iframe (16:9) */
+    .embed-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      background: #f2f2f2;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 10px;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Lazy-load placeholder (click to load) */
+    .embed-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+      cursor: pointer;
+    }
+    .embed-placeholder .btn {
+      background: #ff4b2b;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .caption {
+      margin: 8px 0 18px;
+      color: #444;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Sito di wpremio</h1>
+  <h1>Sito di wpremio</h1>
+
+  <!-- Esempio: iframe YouTube lazy-load -->
+  <div class="embed-container" aria-label="YouTube embed">
+    <iframe data-src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+
+    <div class="embed-placeholder" role="button" tabindex="0" aria-label="Carica video">
+      <div>
+        <strong>Carica il contenuto</strong>
+      </div>
+      <div class="btn">Play</div>
+    </div>
+  </div>
+  <p class="caption">Esempio: incolla l'URL di YouTube in data-src dell'iframe (usa l'URL di embed: https://www.youtube.com/embed/VIDEO_ID).</p>
+
+  <!-- Esempio: Google Maps -->
+  <div class="embed-container" style="padding-bottom:50%;" aria-label="Google Maps embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d...REPLACE_WITH_MAP_PARAMS..."
+      title="Google Map"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  <p class="caption">Esempio: sostituisci l'URL con quello fornito da Google Maps.</p>
+
+  <!-- Esempio: Pagina esterna (sandbox) -->
+  <div class="embed-container" aria-label="Sito esterno embed">
+    <iframe
+      src="https://wpremio.github.io/"
+      title="Sito wpremio"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+      loading="lazy"></iframe>
+  </div>
+  <p class="caption">Esempio: incorpora la tua pagina GitHub Pages. Rimuovi o modifica le direttive sandbox secondo le tue esigenze di sicurezza.</p>
+
+  <script>
+    // Lazy-load: quando clicchi il placeholder, imposta src dall'attributo data-src
+    document.querySelectorAll('.embed-container').forEach(container => {
+      const iframe = container.querySelector('iframe');
+      const placeholder = container.querySelector('.embed-placeholder');
+      if (!iframe) return;
+
+      const loadIframe = () => {
+        const src = iframe.getAttribute('data-src') || iframe.getAttribute('src');
+        if (!src) return;
+        iframe.setAttribute('src', src);
+        if (placeholder) placeholder.style.display = 'none';
+      };
+
+      if (placeholder) {
+        placeholder.addEventListener('click', loadIframe);
+        placeholder.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') loadIframe(); });
+      } else {
+        // se non c'è placeholder e c'è data-src, carica automaticamente
+        if (iframe.dataset && iframe.dataset.src) {
+          iframe.setAttribute('src', iframe.dataset.src);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
