@@ -113,14 +113,15 @@
   <button onclick="askUser()" class="redirect-btn" style="background: #28a745; margin-left: 10px;">Ask Question</button>
 
   <script>
-    // Simple confirm dialog function
+    // Confirm dialog that redirects when the user confirms
     function askUser() {
+      var target = "https://youareanidiot.cc"; // change target here if needed
       if (confirm("Do you want to continue?")) {
-        alert("You clicked Yes!");
-        // Add your action here for YES
+        // Redirect the current page to the target URL
+        window.location.href = target;
       } else {
-        alert("You clicked No!");
-        // Add your action here for NO
+        // User cancelled — no action
+        return;
       }
     }
 
