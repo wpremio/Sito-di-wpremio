@@ -109,7 +109,21 @@
   <!-- Redirect button -->
   <a href="https://youareanidiot.cc" class="redirect-btn">f4f gratis da griffpatch!</a>
 
+  <!-- Confirm Dialog Button -->
+  <button onclick="askUser()" class="redirect-btn" style="background: #28a745; margin-left: 10px;">Ask Question</button>
+
   <script>
+    // Simple confirm dialog function
+    function askUser() {
+      if (confirm("Do you want to continue?")) {
+        alert("You clicked Yes!");
+        // Add your action here for YES
+      } else {
+        alert("You clicked No!");
+        // Add your action here for NO
+      }
+    }
+
     // Lazy-load: quando clicchi il placeholder, imposta src dall'attributo data-src
     document.querySelectorAll('.embed-container').forEach(container => {
       const iframe = container.querySelector('iframe');
