@@ -66,23 +66,29 @@
       font-size: 14px;
     }
 
-    /* Redirect button styling */
+    /* Redirect button styling - Modern Blue */
     .redirect-btn {
       display: inline-block;
-      background: #f2f3f4;
+      background: #007bff;
       color: white;
       padding: 12px 24px;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
       border: none;
       cursor: pointer;
       font-size: 16px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
       margin-top: 10px;
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
     }
     .redirect-btn:hover {
-      background: #e63a1a;
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    }
+    .redirect-btn:active {
+      transform: translateY(0);
     }
   </style>
 </head>
