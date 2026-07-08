@@ -2,81 +2,228 @@
 <html lang="it">
 <head>
   <!-- Add favicon links -->
-  <link rel="icon" type="image/x-icon" href="Favicon/favicon.ico">
-  <link rel="icon" type="image/png" href="Favicon/favicon.png">
-  <link rel="apple-touch-icon" href="Favicon/apple-touch-icon.png">  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/Favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/Favicon/favicon.png">
+  <link rel="apple-touch-icon" href="/Favicon/apple-touch-icon.png">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Problemi?</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    h1 {
-      font-size: 64px;
-      text-align: left;
-      margin: 24px 0 40px;
+    /* Header styling */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
+    header .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    header nav {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #3498db;
+    }
+
+    /* Main content */
     main {
       flex: 1;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
+    main h1 {
+      font-size: 48px;
+      text-align: left;
+      margin: 24px 0 40px;
+      color: #2c3e50;
+    }
+
+    main h3 {
+      font-size: 20px;
+      color: #34495e;
+      margin: 20px 0 15px;
+    }
+
+    /* Form styling */
+    form {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      max-width: 500px;
+      margin: 30px 0;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form button {
+      background: #3498db;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    form button:hover {
+      background: #2980b9;
+    }
+
+    /* Footer styling */
     footer {
-      background-color: #f0f0f0;
-      border-top: 1px solid #ddd;
+      background-color: #2c3e50;
+      color: white;
+      border-top: 1px solid #34495e;
       padding: 20px;
       margin-top: 40px;
       text-align: center;
       font-size: 14px;
-      color: #666;
+    }
+
+    footer p {
+      margin-bottom: 10px;
     }
 
     footer a {
-      color: #0066cc;
+      color: #3498db;
       text-decoration: none;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      header nav {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      main h1 {
+        font-size: 32px;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Header Navigation -->
+  <header>
+    <div class="container">
+      <h1>wpremio</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/indice.html">Indice</a>
+        <a href="/nostalgia.html">Nostalgia</a>
+        <a href="/problemi.html">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
   <main>
     <h1>Sito di wpremio</h1>
 
     <h3>Hai riscontrato problemi durante la visualizzazione del sito?</h3>
     <h3>Nessun problema, inviaci un messaggio</h3>
     
-    <!-- modify this form HTML and place wherever you want your form -->
-    <form
-      action="https://formspree.io/f/mkoleogk"
-      method="POST"
-    >
+    <!-- Contact form -->
+    <form action="https://formspree.io/f/mkoleogk" method="POST">
       <label>
         E-mail:
-        <input type="email" name="email">
+        <input type="email" name="email" required>
       </label>
       <label>
         Descrizione del problema:
-        <textarea name="message"></textarea>
+        <textarea name="message" required></textarea>
       </label>
-      <!-- your other form fields go here -->
-      <button type="submit">Send</button>
+      <button type="submit">Invia</button>
     </form>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2026 wpremio. Tutti i diritti riservati.</p>
-    <p><a href="/">Home</a> | <a href="/privacy">Privacy</a> | <a href="/contatti">Contatti</a></p>
+    <p><a href="/">Home</a> | <a href="/indice.html">Indice</a> | <a href="/problemi.html">Contatti</a></p>
   </footer>
 </body>
 </html>
