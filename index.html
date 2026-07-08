@@ -89,21 +89,6 @@
   <!-- Redirect button -->
   <a href="https://youareanidiot.cc" class="redirect-btn">f4f gratis da griffpatch!</a>
 
-  <!-- Confirm Dialog Button -->
-  <button onclick="askUser()" class="redirect-btn" style="margin-left: 10px;">Ask Question</button>
-
-  <script>
-    // Confirm dialog that redirects when the user confirms
-    function askUser() {
-      var target = "https://youareanidiot.cc"; // change target here if needed
-      if (confirm("Do you want to continue?")) {
-        // Redirect the current page to the target URL
-        window.location.href = target;
-      } else {
-        // User cancelled — no action
-        return;
-      }
-    }
 
     // Lazy-load: quando clicchi il placeholder, imposta src dall'attributo data-src
     document.querySelectorAll('.embed-container').forEach(container => {
