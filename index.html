@@ -84,7 +84,7 @@
 </head>
 <body>
   <h1>Sito di wpremio</h1>
-  <img src="/path/to/your/image.jpg" alt="Header image" class="header-image">
+  <img src="https://raw.githubusercontent.com/wpremio/wpremio.github.io/9979eb11fdc4625b9b3803f5567f2bea843995eb/1352172534_480x360.png" alt="Header image" class="header-image">
 
  
   <!-- Esempio: Pagina esterna (sandbox) -->
@@ -101,27 +101,6 @@
   <a href="https://youareanidiot.cc" class="redirect-btn">f4f gratis da griffpatch!</a>
 
 
-    // Lazy-load: quando clicchi il placeholder, imposta src dall'attributo data-src
-    document.querySelectorAll('.embed-container').forEach(container => {
-      const iframe = container.querySelector('iframe');
-      const placeholder = container.querySelector('.embed-placeholder');
-      if (!iframe) return;
-
-      const loadIframe = () => {
-        const src = iframe.getAttribute('data-src') || iframe.getAttribute('src');
-        if (!src) return;
-        iframe.setAttribute('src', src);
-        if (placeholder) placeholder.style.display = 'none';
-      };
-
-      if (placeholder) {
-        placeholder.addEventListener('click', loadIframe);
-        placeholder.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') loadIframe(); });
-      } else {
-        // se non c'è placeholder e c'è data-src, carica automaticamente
-        if (iframe.dataset && iframe.dataset.src) {
-          iframe.setAttribute('src', iframe.dataset.src);
-        }
       }
     });
   </script>
